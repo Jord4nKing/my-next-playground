@@ -6,17 +6,3 @@ export default function Playground() {
     </main>
   );
 }
-
-function HomePage() {
-  // 	...
-  function handleClick() {
-    console.log('increment like count');
-  }
- 
-  return (
-    <div>
-      {/* ... */}
-      <button onClick={handleClick}>Like</button>
-    </div>
-  );
-}
