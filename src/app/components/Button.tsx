@@ -1,12 +1,10 @@
-"use client"
-
 type ButtonProps = {
     children: React.ReactNode;
     onClick?: () => void;
     variant?: "primary" | "secondary";
   };
   
-  export function Button({ children, onClick, variant = "primary" }: ButtonProps) {
+  export default function Button({ children, onClick, variant = "primary" }: ButtonProps) {
     const baseStyles = "px-4 py-2 rounded-lg font-medium transition";
   
     const variants = {

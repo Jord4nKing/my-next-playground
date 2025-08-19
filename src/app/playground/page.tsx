@@ -1,8 +1,8 @@
-"use client";
+"use client"
 
 import Button from "../components/Button";
 
-export function Playground() {
+export default function Playground() {
   return (
     <main className="p-8 space-y-6">
       <h1 className="text-2xl font-bold">Component Playground</h1>
