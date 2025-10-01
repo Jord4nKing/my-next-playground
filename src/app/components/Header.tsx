@@ -8,11 +8,11 @@ export default function Header() {
       <Link href="/">
         <div className="flex items-center gap-3 cursor-pointer">
           <Image
-            src="/logo.svg"   // Place your logo in the /public folder
+            src="/logo.svg" 
             alt="Logo"
-            width={80}        // Adjust size
+            width={80}        
             height={80}
-            priority          // Optional: loads the logo immediately
+            priority          
           />
         </div>
       </Link>
