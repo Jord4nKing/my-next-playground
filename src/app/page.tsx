@@ -17,6 +17,7 @@ async function getPosts(): Promise<Post[]> {
 }
 
 
+
 export default async function HomePage() {
   const posts = await getPosts()
 
