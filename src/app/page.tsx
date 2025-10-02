@@ -1,5 +1,3 @@
-import SideBySide from "./components/Sidebyside"
-import Hero from "./components/Hero"
 import Image from "next/image"
 import { client, urlFor } from "./lib/sanity"
 
