@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/client": "^7.11.2",
+    "@sanity/image-url": "^1.2.0",
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
     "next": "15.4.6",
