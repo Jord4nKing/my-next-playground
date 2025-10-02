@@ -1,10 +1,21 @@
 import Image from "next/image"
 import { client, urlFor } from "./lib/sanity"
 
-async function getPosts() {
-  // 👇 now we also fetch mainImage.asset
+interface Post {
+  title: string
+  body: string
+  mainImage?: {
+    asset: {
+      _ref: string
+      _type: string
+    }
+  }
+}
+
+async function getPosts(): Promise<Post[]> {
   return client.fetch(`*[_type == "post"]{title, body, mainImage{asset}}`)
 }
+
 
 export default async function HomePage() {
   const posts = await getPosts()
@@ -12,7 +23,7 @@ export default async function HomePage() {
   return (
     <main>
       <h1>Sanity Posts</h1>
-      {posts.map((post: any, i: number) => (
+      {posts.map((post, i) => (
         <article key={i}>
           <h2>{post.title}</h2>
           <p>{post.body}</p>
