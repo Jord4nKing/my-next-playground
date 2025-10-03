@@ -9,9 +9,9 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
+  { href: "/about-us", label: "About" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact-us", label: "Contact" },
 ];
 
 export default function Header() {
