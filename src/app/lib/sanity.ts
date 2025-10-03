@@ -1,17 +1,16 @@
 import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 
-// 👇 Create the Sanity client
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!, // from .env.local
-  dataset: 'production', // default dataset
-  apiVersion: '2025-10-02', // use today’s date for stability
-  useCdn: true, // `false` if you want always-fresh data
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "",
+  dataset: 'production',
+  apiVersion: '2025-10-02', // today’s date
+  useCdn: true,
 })
 
-// 👇 Image URL builder
 const builder = imageUrlBuilder(client)
 
-export function urlFor(source: any) {
+export function urlFor(source: SanityImageSource) {
   return builder.image(source)
 }
