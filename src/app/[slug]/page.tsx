@@ -3,19 +3,11 @@ import BlockRenderer, { Block } from "@/components/BlockRenderer"
 
 export const revalidate = 0
 
-// ---------- TYPES ----------
-interface PageProps {
-  params: {
-    slug: string
-  }
-}
-
 type CmsPage = {
   title: string
   content: Block[]
 }
 
-// ---------- FETCH ----------
 async function getPage(slug: string): Promise<CmsPage> {
   return client.fetch(
     `*[_type == "page" && slug.current == $slug][0]{
@@ -30,8 +22,11 @@ async function getPage(slug: string): Promise<CmsPage> {
   )
 }
 
-// ---------- PAGE ----------
-export default async function Page({ params }: PageProps) {
+export default async function Page({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const page = await getPage(params.slug)
 
   if (!page) {
@@ -44,5 +39,3 @@ export default async function Page({ params }: PageProps) {
     </main>
   )
 }
-
-
