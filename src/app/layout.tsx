@@ -1,8 +1,8 @@
 import "./globals.css";
 import Link from "next/link";
 import { ReactNode } from "react";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 export const metadata = {
   title: "My Portfolio",
