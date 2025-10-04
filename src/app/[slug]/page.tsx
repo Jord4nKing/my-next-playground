@@ -24,11 +24,13 @@ async function getPage(slug: string): Promise<CmsPage> {
   )
 }
 
-// @ts-expect-error Next.js types are wrong here
-
 // ---------- PAGE ----------
-export default async function Page(props: { params: { slug: string } }) {
-  const { params } = props
+// @ts-expect-error – Next.js types for dynamic params can be mismatched
+export default async function Page({
+  params,
+}: {
+  params: { slug: string }
+}) {
   const page = await getPage(params.slug)
 
   if (!page) {
