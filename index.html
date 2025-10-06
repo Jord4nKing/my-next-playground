@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon</title>
+    <style>
+      :root {
+        --bg: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        --text-color: #fff;
+        --accent: #00bcd4;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: var(--bg);
+        color: var(--text-color);
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+        padding: 2rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        opacity: 0.85;
+        margin-bottom: 2rem;
+      }
+
+      .loader {
+        width: 60px;
+        height: 60px;
+        border: 5px solid rgba(255, 255, 255, 0.2);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      footer {
+        position: absolute;
+        bottom: 1rem;
+        font-size: 0.9rem;
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Coming Soon</h1>
+      <p>Our website is under construction. Stay tuned!</p>
+      <div class="loader"></div>
+    </main>
+    <footer>© <span id="year"></span> Your Company Name</footer>
+
+    <script>
+      // Auto update year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
