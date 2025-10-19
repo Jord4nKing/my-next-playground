@@ -3,20 +3,36 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { client } from "@/lib/sanity";
+import { navQuery } from "@/lib/queries";
 
-const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/contact", label: "Contact" },
-];
+interface NavItem {
+  href: string;
+  title: string;
+}
 
 export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navItems, setNavItems] = useState<NavItem[]>([]);
+
+  useEffect(() => {
+    async function fetchNav() {
+      try {
+        console.log("✅ Sanity Project ID:", process.env.NEXT_PUBLIC_SANITY_PROJECT_ID);
+        const data = await client.fetch(navQuery);
+        console.log("🔍 NAV DATA:", data);
+        setNavItems(data);
+      } catch (err) {
+        console.error("❌ Error fetching navigation:", err);
+      }
+    }
+    fetchNav();
+  }, []);
+  
 
   return (
     <header className="p-6 bg-white text-black flex items-center justify-between relative">
@@ -39,7 +55,7 @@ export default function Header() {
                   : "after:w-0 after:bg-black hover:after:w-full"
               }`}
             >
-              {item.label}
+              {item.title}
             </Link>
           );
         })}
@@ -54,7 +70,7 @@ export default function Header() {
         {menuOpen ? <X size={28} /> : <Menu size={28} />}
       </button>
 
-      {/* Mobile Nav with animation */}
+      {/* Mobile Nav */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
@@ -75,9 +91,9 @@ export default function Header() {
                       ? "after:w-full after:bg-black font-semibold"
                       : "after:w-0 after:bg-black hover:after:w-full"
                   }`}
-                  onClick={() => setMenuOpen(false)} // close menu when clicking a link
+                  onClick={() => setMenuOpen(false)}
                 >
-                  {item.label}
+                  {item.title}
                 </Link>
               );
             })}
