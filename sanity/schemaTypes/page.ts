@@ -13,6 +13,12 @@ export default defineType({
       options: { source: 'title', maxLength: 96 },
     },
     {
+      name: 'order',
+      title: 'Order',
+      type: 'number',
+      description: 'Controls the order of pages in the navigation',
+    },
+    {
       name: 'content',
       title: 'Content',
       type: 'array',
